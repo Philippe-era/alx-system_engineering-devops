@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times but prints Hi at 9
+initial=0
+while ((initial < 10))
+do
+	((initial++))
+	if [ $initial -eq 4 ]
+	then
+		echo "bad luck"
+	elif [ $initial -eq 8 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+done
+
+

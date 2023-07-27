@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#fizzbuzz stuff we coding it you the vibes
+
+num_check=1
+while [ $num_check -ne 101 ]
+do
+    if [ $((num_check % 15)) -eq 0 ]
+    then
+	echo "FizzBuzz"
+    elif [ $((num_check % 3)) -eq 0 ]
+    then
+	echo "Fizz"
+    elif [ $((num_check % 5)) -eq 0 ]
+    then
+        echo "Buzz"
+    else
+	echo $num_check
+    fi
+    ((num_check++))
+done
+

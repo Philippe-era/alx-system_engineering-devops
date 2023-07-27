@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script that displays the vistor IP address
+awk '{print $1 " " $9}' apache-access.log
+

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script will display information based on the conditions
+initial=1
+while ((initial < 21))
+do
+	echo $initial
+	case "$initial" in
+		4) echo "bad luck from China";;
+		9) echo "bad luck from Japan";;
+		17) echo "bad luck from Italy";;
+		esac
+	((initial++))
+done
+
+

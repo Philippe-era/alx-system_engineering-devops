@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#using ls to display information list items
+
+list_info=$(ls)
+for initial in $list_info
+do
+    echo "$initial" | cut -d'-' -f 2
+done
+
+

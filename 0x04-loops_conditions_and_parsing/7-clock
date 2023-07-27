@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#nested loop stuff
+
+hour_time=0
+minutes_time=1
+while [ $hour_time -ne 13 ]
+do
+    echo "Hour: $hour_time"
+    ((hour_time++))
+    while [ $minutes_time -ne 60 ]
+    do
+	echo $minutes_time
+	((minutes_time++))
+    done
+    ((minutes_time = 1))
+done
+
+

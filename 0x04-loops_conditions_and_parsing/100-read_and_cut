@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#read and cut stuff
+
+while read -r firstname
+do
+   echo "$firstname" | cut -d ":" -f1,4,6
+done < /etc/passwd
+
