@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# ports on my machine will be checked out and listened to
+
+sudo nc -l localhost 98
