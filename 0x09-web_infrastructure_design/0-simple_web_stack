@@ -1,0 +1,44 @@
+To understand the design of this single-server web infrastructure, let's walk through the components and their roles, as well as address the specified requirements and potential issues.
+
+1. Server:
+A server is a powerful computer that hosts applications, services, or resources to be accessed by other computers, known as clients. In this case, the server is the central unit responsible for managing the website and its associated components.
+
+2. Domain Name:
+A domain name, such as foobar.com, is a human-readable address used to identify websites on the internet. It provides a convenient way for users to access websites without needing to remember numerical IP addresses. The domain name is essential for users to reach the website.
+
+3. DNS Record - www:
+The DNS (Domain Name System) is responsible for translating human-readable domain names into IP addresses that computers can understand. The "www" in www.foobar.com is a subdomain, and it's typically configured with a DNS record called a CNAME (Canonical Name) record. This record points to the main domain's IP address (in this case, 8.8.8.8), allowing users to access the website using the "www" prefix.
+
+4. Web Server (Nginx):
+The web server's role is to receive incoming requests from users' browsers and serve static content, such as HTML, CSS, and images. In this infrastructure, Nginx is used as the web server to handle these tasks efficiently.
+
+5. Application Server:
+The application server hosts the dynamic components of the website, including the code base that generates content based on user interactions. It communicates with the web server to process requests and return dynamic content. In this design, the application server is responsible for processing more complex operations beyond what the web server can handle.
+
+6. Application Files (Code Base):
+The application files contain the website's code and logic, including scripts, libraries, and templates. These files are hosted on the application server and are executed to generate dynamic content for users.
+
+7. Database (MySQL):
+The database stores and manages structured data used by the website. This includes user accounts, content, configurations, and more. MySQL is used as the relational database management system to handle data storage and retrieval.
+
+8. Communication with User's Computer:
+When a user wants to access the website, they enter "www.foobar.com" in their browser. The following steps occur:
+
+The user's computer sends a DNS query to resolve the domain name to an IP address.
+The DNS server returns the IP address of the server (8.8.8.8) to the user's computer.
+The user's computer establishes an HTTP(S) connection with the web server (Nginx) at the provided IP address.
+The web server receives the request and either serves static content directly or forwards dynamic requests to the application server.
+The application server processes the request, interacts with the MySQL database if needed, generates dynamic content, and sends it back to the web server.
+The web server then delivers the content to the user's computer, which displays it in their browser.
+Issues with the Infrastructure:
+While this infrastructure meets the basic requirements, it has some limitations:
+
+Single Point of Failure (SPOF): Since all components are hosted on a single server, any hardware or software failure could lead to downtime for the entire website.
+Downtime During Maintenance: Deploying new code or performing maintenance on the web server or application server would require taking the website offline temporarily.
+Limited Scalability: With a single server, it's challenging to handle a large influx of incoming traffic. As the website gains popularity, it may become slow or unresponsive.
+In a real-world scenario, addressing these issues might involve using multiple servers, load balancing, redundancy, and cloud services to ensure better reliability, availability, and scalability for the website.
+
+
+
+
+
