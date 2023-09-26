@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# installation of nginx to start the web server
+# Nginx start 
+# Querying the http in line
+
+apt-get -y update
+apt-get -y install nginx
+#allows  for Nginx HTTP
+ufw allow 'Nginx HTTP'
+# will print hello world  in the index.html
+echo 'Hello World!' > /var/www/html/index.html
+# starts the nginx service
+service nginx start
+
