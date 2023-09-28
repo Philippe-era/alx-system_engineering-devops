@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# Configure your Nginx server to have a custom 404 page
+# Configuration of the nginx server
 
+#scripts for creation in all
 apt-get update
 apt-get install -y nginx
-# new directory 
+#creates directory
 mkdir /etc/nginx/html
-# creates files
+#creates the index html
 touch /etc/nginx/html/index.html
-# echo Hello world to the index.html
+#prints hello world to the screen
 echo "Hello World!" > /etc/nginx/html/index.html
 touch /etc/nginx/html/404.html
-echo "This is a redirecting page" > /etc/nginx/html/404.html
+#echo this to the file and means this is not a file in french
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
 printf %s "server {
     listen 80;
@@ -19,7 +21,7 @@ printf %s "server {
     index  index.html index.htm;
 
     location /redirect_me {
-        return 301 https://youtu.be/BNmyYzosV-E?si=-Wn2abIY0JnkBRDe permament;
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 
     error_page 404 /404.html;
@@ -29,5 +31,5 @@ printf %s "server {
     }
 }" > /etc/nginx/sites-available/default
 
+#service starts now with this script
 service nginx restart
-

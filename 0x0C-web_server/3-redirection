@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
-# Configuration of the Nginx server so you can have another page
-# Redirecting configuration is now 301 moved completely
+# configuration of the new page 
+# "301 is now the new redirectional place
 
 apt-get update
 apt-get install -y nginx
-
+#creates the directory 
 mkdir /etc/nginx/html
+#creates the new file missing#creates the directory 
 touch /etc/nginx/html/index.html
-echo "Hello ALX!" > /etc/nginx/html/index.html
+echo "Hello Word!" > /etc/nginx/html/index.html
 printf %s "server {
     listen 80;
     listen [::]:80 default_server;
     root   /etc/nginx/html;
     index  index.html index.htm;
     location /redirect_me {
-        return 301 https://youtu.be/BNmyYzosV-E?si=-Wn2abIY0JnkBRDe;
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 }" > /etc/nginx/sites-available/default
-
+#starts the service nginx 
 service nginx restart
 
