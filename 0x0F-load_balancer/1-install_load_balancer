@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Haproxy configurations 
+# - Enables management via the init script.
+
+
+sudo apt-get install -y haproxy
+
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+cat <<EOT | sudo tee -a /etc/haproxy/haproxy.cfg
+
+    timeout client  30000
+    bind 0:80
+    
+
+    timeout connect  3000
+    timeout server  30000
+    balance roundrobin
+    server 238947-web-01 18.209.224.38:80 check
+    server 238947-web-02 18.206.202.102:80 check
+    
+EOT
+#service starts
+sudo service haproxy restart
+
