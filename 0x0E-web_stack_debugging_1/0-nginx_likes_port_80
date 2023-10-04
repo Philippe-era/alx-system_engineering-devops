@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# checks whos keeping the port listened 
+# the configuration of nginx
+#deletes the file 
+rm /etc/nginx/sites-enabled/default
+#configures the new file
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+#starts the nginx service
+service nginx restart
+
