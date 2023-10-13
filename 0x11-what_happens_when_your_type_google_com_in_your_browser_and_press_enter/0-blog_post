@@ -1,0 +1,27 @@
+When you type https://www.google.com into your browser's address bar and hit Enter, it initiates a complex series of events that allow you to access Google's website. Let's break down this process step by step, exploring the key components involved in making this seamless interaction possible.
+
+1. DNS Request:
+Your browser begins by sending a Domain Name System (DNS) request to resolve the human-readable domain name (www.google.com) into an IP address. DNS servers around the world work collaboratively to provide the IP address associated with the requested domain. Once resolved, your browser knows where to send the request.
+
+2. TCP/IP:
+With the IP address in hand, your browser establishes a Transmission Control Protocol (TCP) connection to the server hosting www.google.com using the Internet Protocol (IP). TCP ensures that data packets are delivered reliably and in the correct order, essential for a stable connection.
+
+3. Firewall:
+At this stage, the data packets pass through your computer's firewall, a security barrier designed to filter out unauthorized access and potentially harmful content. The firewall ensures that only safe and legitimate traffic enters your system.
+
+4. HTTPS/SSL:
+Before any data is exchanged, your browser and the server engage in a handshake process to establish a secure Hypertext Transfer Protocol Secure (HTTPS) connection. This involves the use of Secure Sockets Layer (SSL) or Transport Layer Security (TLS) protocols, encrypting the data being transmitted between your browser and the server. This encryption protects your sensitive information from eavesdroppers and ensures the integrity of the data being exchanged.
+
+5. Load-Balancer:
+Many popular websites, including Google, employ load balancers. These devices distribute incoming network traffic across multiple servers, ensuring no single server becomes overwhelmed. Load balancing enhances the website's reliability, scalability, and performance by efficiently managing the traffic load.
+
+6. Web Server:
+Once the request reaches Google's servers, a web server processes the request. The web server's primary job is to handle HTTP requests, responding with the appropriate HTML, CSS, and JavaScript files that make up the website's structure and design. In the case of Google, the server generates the search interface you see in your browser.
+
+7. Application Server:
+For more complex web applications, there's often an application server involved. This server executes specific tasks, processes database requests, and performs other application-related functions. In Google's case, this might involve running algorithms to provide search results personalized to your query.
+
+8. Database:
+Behind the scenes, a database server stores and retrieves the dynamic content, such as search results or user-specific information. Databases are crucial for websites that require user login, store user-generated content, or customize information based on user preferences.
+
+In conclusion, the process of typing https://www.google.com in your browser and pressing Enter involves a symphony of technologies and components, seamlessly working together to deliver the website's content to your screen. Understanding this intricate web stack provides valuable insights into the world of internet technologies and the collaborative efforts required to ensure a smooth user experience.
