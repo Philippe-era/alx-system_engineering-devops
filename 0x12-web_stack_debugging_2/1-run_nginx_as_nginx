@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Update the system and install nginx
+apt-get update
+apt-get install -y nginx
+
+# Find the nginx configuration file (usually located at /etc/nginx/nginx.conf)
+nginx_conf="/etc/nginx/nginx.conf"
+
+# sets the information accordingly
+sed -i 's/user\s*nginx;/user nginx;/g' "$nginx_conf"
+
+# all ports will be listened to going forward
+echo "server {
+    listen *:8080;
+    server_name _;
+
+    location / {
+        # Your additional configurations can go here
+        # Example: root /var/www/html;
+        #         index index.html;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Restart so changes can be applied
+service nginx restart
+
+# display message when it goes left
+echo "Nginx is now running as nginx user and listening on all active IPs on port 8080."
+

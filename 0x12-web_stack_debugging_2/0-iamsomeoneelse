@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#this script will pass its requirement
+
+# Check if the script is provided with an argument
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+
+# Get the username passed as an argument
+username="$1"
+
+# Run whoami command under the specified user
+sudo -u "$username" whoami
