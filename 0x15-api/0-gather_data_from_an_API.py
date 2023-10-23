@@ -7,9 +7,8 @@ if __name__ == "__main__":
     url_tocheck = "https://jsonplaceholder.typicode.com/"
     user_network = requests.get(url_tocheck + "users/{}".
     format(sys.argv[1])).json()
-    todos_check = requests.get(url_tocheck + "todos",
-            params={"userId": sys.argv[1]}).json()
-    done = [t.get("title") for t in todos_check if t.get("completed") is True]
+    list_1 = requests.get(url_tocheck + "todos",params={"userId": sys.argv[1]}).json()
+    done = [t.get("title") for t in list_1 if t.get("completed") is True]
     print("Employee {} is done with tasks({}/{}):".format(
-        user_network.get("name"), len(done), len(todos_check)))
+        user_network.get("name"), len(done), len(list_1)))
     [print("\t {}".format(c)) for c in done]
