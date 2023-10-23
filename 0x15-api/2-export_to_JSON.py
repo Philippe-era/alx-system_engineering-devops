@@ -10,7 +10,7 @@ if __name__ == "__main__":
     user_check = requests.get(url_tocheck + "users/{}".format(user_id)).json()
     username = user_check.get("username")
     todos_list = requests.get(url_tocheck + "todos",
-    params={"userId": user_id}).json()
+            params={"userId": user_id}).json()
 
     with open("{}.json".format(user_id), "w") as jsonfile:
         json.dump({user_id: [{
