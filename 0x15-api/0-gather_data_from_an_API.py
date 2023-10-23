@@ -4,10 +4,10 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    url_1 = "https://jsonplaceholder.typicode.com/"
-    user_network = requests.get(url_1 + "users/{}".format(sys.argv[1])).json()
-    list_1 = requests.get(url_1 + "todos", params={"userId": sys.argv[1]}).json()
-    done = [t.get("title") for t in list_1 if t.get("completed") is True]
+    www = "https://jsonplaceholder.typicode.com/"
+    user_network = requests.get(www + "users/{}".format(sys.argv[1])).json()
+    list1 = requests.get(www + "todos", params={"userId": sys.argv[1]}).json()
+    done = [t.get("title") for t in list1 if t.get("completed") is True]
     print("Employee {} is done with tasks({}/{}):".format(
-        user_network.get("name"), len(done), len(list_1)))
+        user_network.get("name"), len(done), len(list1)))
     [print("\t {}".format(c)) for c in done]
