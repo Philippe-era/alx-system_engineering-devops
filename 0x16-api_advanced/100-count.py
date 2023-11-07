@@ -1,18 +1,18 @@
-#!/usr/bin/python3
-""" Module for the matter at hand """
+i#!/usr/bin/python3
+""" odule for the main in verses the count """
 import requests
 
 
-def count_words(subreddit, listed_words, latest='',
-                dictionary_words={}):
+def count_words(subreddit, word_list, new_after='',
+                words_dict={}):
 
-    listed_words = map(lambda x: x.lower(), listed_words)
-    listed_words = list(listed_words)
-
+    word_list = map(lambda x: x.lower(), word_list)
+    word_list = list(word_list)
+# result from the request
     res = requests.get("https://www.reddit.com/r/{}/hot.json"
                        .format(subreddit),
                        headers={'User-Agent': 'Custom'},
-                       params={'after': latest},
+                       params={'after': new_after},
                        allow_redirects=False)
 
     if res.status_code != 200:
@@ -27,25 +27,25 @@ def count_words(subreddit, listed_words, latest='',
         return
 
     children = response.get('children', [])
-
-    for position in children:
-        title = position.get('data', {}).get('title', '')
-        for important_word in listed_words:
+#iterates thru the information
+    for post in children:
+        title = post.get('data', {}).get('title', '')
+        for key_word in word_list:
             for word in title.lower().split():
-                if important_word == word:
-                    dictionary_words[important_word] = dictionary_words.get(important_word, 0) + 1
+                if key_word == word:
+                    words_dict[key_word] = words_dict.get(key_word, 0) + 1
 
-    latest = response.get('after', None)
-
-    if latest is None:
-        sorted_dict = sorted(dictionary_words.items(),
+    new_after = response.get('after', None)
+#if conditions
+    if new_after is None:
+        sorted_dict = sorted(words_dict.items(),
                              key=lambda x: x[1],
                              reverse=True)
-
+#loops thru the sorted dictionary
         for initial in sorted_dict:
             if initial[1] != 0:
                 print("{}: {}".format(initial[0], initial[1]))
         return
-
-    return count_words(subreddit, listed_words,
-                       latest, dictionary_words)
+#will return the count words from the main .py
+    return count_words(subreddit, word_list,
+                       new_after, words_dict)
